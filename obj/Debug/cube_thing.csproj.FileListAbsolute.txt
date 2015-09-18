@@ -1,0 +1,13 @@
+D:\Projektek\Windows\cube_thing\cube_thing\bin\Debug\cube_thing.exe
+D:\Projektek\Windows\cube_thing\cube_thing\bin\Debug\cube_thing.pdb
+D:\Projektek\Windows\cube_thing\cube_thing\bin\Debug\OpenTK.Compatibility.dll
+D:\Projektek\Windows\cube_thing\cube_thing\bin\Debug\OpenTK.dll
+D:\Projektek\Windows\cube_thing\cube_thing\bin\Debug\OpenTK.GLControl.dll
+D:\Projektek\Windows\cube_thing\cube_thing\bin\Debug\OpenTK.pdb
+D:\Projektek\Windows\cube_thing\cube_thing\bin\Debug\OpenTK.xml
+D:\Projektek\Windows\cube_thing\cube_thing\bin\Debug\OpenTK.GLControl.xml
+D:\Projektek\Windows\cube_thing\cube_thing\obj\Debug\cube_thing.csprojResolveAssemblyReference.cache
+D:\Projektek\Windows\cube_thing\cube_thing\obj\Debug\cube_thing.Properties.Resources.resources
+D:\Projektek\Windows\cube_thing\cube_thing\obj\Debug\cube_thing.csproj.GenerateResource.Cache
+D:\Projektek\Windows\cube_thing\cube_thing\obj\Debug\cube_thing.exe
+D:\Projektek\Windows\cube_thing\cube_thing\obj\Debug\cube_thing.pdb
