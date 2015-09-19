@@ -2,6 +2,7 @@
 using cube_thing.renderEngine.core.entity;
 using cube_thing.renderEngine.render.model;
 using OpenTK;
+using System;
 using System.Collections.Generic;
 using static renderEngine.utils.OpenTKAsOpenGL;
 
@@ -33,7 +34,7 @@ namespace cube_thing.renderEngine.core.renderer
             this.projectionMatrix = camera.getProjectionMatrix();
             foreach (GameObject o in World.getInstance().getGameObjects())
             {
-                gameObjectLoop(o, new Matrix4());
+                gameObjectLoop(o, Matrix4.Zero);
             }
         }
 
@@ -43,7 +44,14 @@ namespace cube_thing.renderEngine.core.renderer
 
             if (g.getRenderer() != null)
             {
-                m = m* renderInstance(g, transformMatrix);
+                if (transformMatrix.ToString() != Matrix4.Zero.ToString())
+                {
+                    m = m * renderInstance(g, transformMatrix);
+                }
+                else
+                {
+                    m =  renderInstance(g, transformMatrix);
+                }
             }
             for (int i = 0; i < g.getChildrens().Count; i++)
             {
@@ -69,7 +77,6 @@ namespace cube_thing.renderEngine.core.renderer
             glDrawElements(GL_TRIANGLES,
                     o.getRenderer().getMesh().getVertexCount(), GL_UNSIGNED_INT, 0);
 
-
             o.getRenderer().getMesh().disableVAO();
             glBindVertexArray(0);
             o.getRenderer().getMaterial().stop();
@@ -81,7 +88,11 @@ namespace cube_thing.renderEngine.core.renderer
         {
             if (obj.getRenderer() == null) return;
             Mesh model = obj.getRenderer().getMesh();
-            List<GameObject> batch = objects[model];
+            List<GameObject> batch = null;
+            if (objects.ContainsKey(model))
+            {
+                batch = objects[model];
+            }
             if (batch != null)
             {
                 batch.Add(obj);

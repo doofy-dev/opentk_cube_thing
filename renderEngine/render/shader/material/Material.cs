@@ -12,9 +12,6 @@ namespace cube_thing.renderEngine.render.shader.material
         private UniformMat4f projectionMatrix = new UniformMat4f("projectionMatrix");
         private UniformMat4f viewMatrix = new UniformMat4f("viewMatrix");
         private UniformMat4f transformationMatrix = new UniformMat4f("transformationMatrix");
-        private UniformBool isTransparentTexture = new UniformBool("isTransparentTexture");
-        private Uniform1f shininess = new Uniform1f("shininess");
-        private Uniform1f reflectivity = new Uniform1f("reflectivity");
 
 
 
@@ -26,9 +23,6 @@ namespace cube_thing.renderEngine.render.shader.material
             locations.Add("projectionMatrix", projectionMatrix);
             locations.Add("viewMatrix", viewMatrix);
             locations.Add("transformationMatrix", transformationMatrix);
-            locations.Add("isTransparentTexture", isTransparentTexture);
-            locations.Add("shininess", shininess);
-            locations.Add("reflectivity", reflectivity);
             foreach (UniformVariable value in values)
             {
                 locations.Add(value.getName(), value);
@@ -49,7 +43,7 @@ namespace cube_thing.renderEngine.render.shader.material
             }
             else
             {
-                Console.Error.WriteLine("Could not find the requested uniform: " + uniformName);
+                Console.WriteLine("Could not find the requested uniform: " + uniformName);
             }
             return -1;
         }
@@ -84,24 +78,6 @@ namespace cube_thing.renderEngine.render.shader.material
         {
             return transformationMatrix;
         }
-
-        public UniformBool getIsTransparentTexture()
-        {
-            return isTransparentTexture;
-        }
-
-
-        public Uniform1f getShininess()
-        {
-            return shininess;
-        }
-
-
-        public Uniform1f getReflectivity()
-        {
-            return reflectivity;
-        }
-
 
         public bool isCullingEnabled()
         {

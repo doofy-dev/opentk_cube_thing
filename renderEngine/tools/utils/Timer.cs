@@ -69,7 +69,7 @@ namespace cube_thing.renderEngine.tools.utils
         }
         public static long getCurrentTime()
         {
-            return DateTime.Now.Ticks *1000 / TimeSpan.TicksPerMillisecond;
+            return DateTime.Now.Ticks *1000 / TimeSpan.TicksPerSecond;
         }
     }
 }

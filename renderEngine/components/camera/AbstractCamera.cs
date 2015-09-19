@@ -61,8 +61,8 @@ namespace cube_thing.renderEngine.components.camera
         public Matrix4 getViewMatrix()
         {
 
-            Vector3 negativeCameraPos = new Vector3(-transform.getPosition().X, -transform.getPosition().Y,
-                    -transform.getPosition().Z);
+            Vector3 negativeCameraPos = new Vector3(-gameObject.transform.getPosition().X, -gameObject.transform.getPosition().Y,
+                    -gameObject.transform.getPosition().Z);
 
             Matrix4 translation = Matrix4.CreateTranslation(negativeCameraPos);
             Matrix4 rotX = Matrix4.CreateFromAxisAngle(Vector3.UnitX, (float)Maths.toRadians((double)transform.getRotation().X));
@@ -78,14 +78,15 @@ namespace cube_thing.renderEngine.components.camera
             float y_scale = (float)((1f / Math.Tan((float)Maths.toRadians(fieldOfView / 2f))) * aspectRatio);
             float x_scale = y_scale / aspectRatio;
             float frustum_length = farPlane - nearPlane;
-
+            projectionMatrix = Matrix4.CreatePerspectiveFieldOfView((float)Math.PI / 4, aspectRatio, nearPlane, farPlane);
+            /*
             projectionMatrix = new Matrix4();
             projectionMatrix.M11 = x_scale;
             projectionMatrix.M22 = y_scale;
             projectionMatrix.M33 = -((farPlane + nearPlane) / frustum_length);
             projectionMatrix.M34 = -1;
             projectionMatrix.M43 = -((2 * farPlane * nearPlane) / frustum_length);
-            projectionMatrix.M44 = 0;
+            projectionMatrix.M44 = 0;*/
 
         }
 
@@ -111,7 +112,7 @@ namespace cube_thing.renderEngine.components.camera
         {
             if (mainCamera == null)
             {
-                Console.Error.WriteLine("No main camera attached!");
+                Console.WriteLine("No main camera attached!");
                 System.Environment.Exit(0);
             }
             return mainCamera;

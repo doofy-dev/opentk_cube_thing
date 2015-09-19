@@ -16,8 +16,8 @@ namespace renderEngine.utils
 
         public static byte GL_FALSE = 0;
         public static byte GL_TRUE = 1;
-        public static int GL_FRAGMENT_SHADER = 0;
-        public static int GL_VERTEX_SHADER = 1;
+        public static int GL_FRAGMENT_SHADER = 1;
+        public static int GL_VERTEX_SHADER = 0;
 
         #region enableCap
         public static EnableCap GL_BLEND = EnableCap.Blend;
@@ -31,11 +31,7 @@ namespace renderEngine.utils
         public static DepthFunction GL_LESS = DepthFunction.Less;
 
         public static ShaderParameter GL_COMPILE_STATUS = ShaderParameter.CompileStatus;
-
-        private static ShaderType[] shaderTypes = new ShaderType[]
-        {
-            ShaderType.FragmentShader, ShaderType.VertexShader
-        };
+        
 
         #region Buffertypes
         public static BufferTarget GL_ELEMENT_ARRAY_BUFFER = BufferTarget.ElementArrayBuffer;
@@ -50,7 +46,7 @@ namespace renderEngine.utils
         public static MaterialFace GL_FRONT_AND_BACK = MaterialFace.FrontAndBack;
 
         public static PolygonMode GL_LINE = PolygonMode.Line;
-        public static PolygonMode GL_FILL= PolygonMode.Line;
+        public static PolygonMode GL_FILL= PolygonMode.Fill;
 
         public static DrawElementsType GL_UNSIGNED_INT = DrawElementsType.UnsignedInt;
 
@@ -103,10 +99,6 @@ namespace renderEngine.utils
         {
             GL.DeleteVertexArray(id);
         }
-        public static void glDeleteBuffers(int id)
-        {
-            GL.DeleteBuffer(id);
-        }
         public static void glDeleteTextures(int id)
         {
             GL.DeleteTexture(id);
@@ -121,7 +113,13 @@ namespace renderEngine.utils
         }
         public static int glGenBuffers()
         {
-            return GL.GenBuffer();
+            int buffer;
+            GL.GenBuffers(1, out buffer);
+            return buffer;
+        }
+        public static void glDeleteBuffers(int id)
+        {
+            GL.DeleteBuffers(1,ref id);
         }
         public static void glBindBuffer(BufferTarget buffertype, int id)
         {
@@ -129,11 +127,11 @@ namespace renderEngine.utils
         }
         public static void glBufferData(BufferTarget target, float[] buffer, BufferUsageHint hint)
         {
-            GL.BufferData<float>(target, (IntPtr)(buffer.Length * sizeof(float)), buffer, hint);
+            GL.BufferData(target, (IntPtr)(buffer.Length * sizeof(float)), buffer, hint);
         }
         public static void glBufferData(BufferTarget target, int[] buffer, BufferUsageHint hint)
         {
-            GL.BufferData<int>(target, (IntPtr)(buffer.Length * sizeof(int)), buffer, hint);
+            GL.BufferData(target, (IntPtr)(buffer.Length * sizeof(int)), buffer, hint);
         }
         public static void glVertexAttribPointer(int index, int size, VertexAttribPointerType type, bool normalized, int stride, int offset)
         {
@@ -204,7 +202,14 @@ namespace renderEngine.utils
         #region Shader specific
         public static int glCreateShader(int type)
         {
+            ShaderType[] shaderTypes = new ShaderType[]
+            {
+               ShaderType.VertexShader, ShaderType.FragmentShader, 
+            };
+
+            Console.WriteLine(shaderTypes[type]);
             return GL.CreateShader(shaderTypes[type]);
+           
         }
         public static void glShaderSource(int shaderID, String shaderSource)
         {

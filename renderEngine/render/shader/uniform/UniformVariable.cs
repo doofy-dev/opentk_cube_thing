@@ -53,68 +53,68 @@ namespace cube_thing.renderEngine.render.shader.uniform
 
         public virtual void set(int value)
         {
-            Console.Error.WriteLine("Integer type is not supported by the " + name + " uniform variable!");
+            Console.WriteLine("Integer type is not supported by the " + name + " uniform variable!");
         }
         public virtual void set(float value)
         {
-            Console.Error.WriteLine("Float type is not supported by the " + name + " uniform variable!");
+            Console.WriteLine("Float type is not supported by the " + name + " uniform variable!");
         }
         public virtual void set(Vector2 value)
         {
-            Console.Error.WriteLine("Vector2 type is not supported by the " + name + " uniform variable!");
+            Console.WriteLine("Vector2 type is not supported by the " + name + " uniform variable!");
         }
         public virtual void set(Vector3 value)
         {
-            Console.Error.WriteLine("Vector3 type is not supported by the " + name + " uniform variable!");
+            Console.WriteLine("Vector3 type is not supported by the " + name + " uniform variable!");
         }
         public virtual void set(Vector4 value)
         {
-            Console.Error.WriteLine("Vector4 type is not supported by the " + name + " uniform variable!");
+            Console.WriteLine("Vector4 type is not supported by the " + name + " uniform variable!");
         }
         public virtual void set(bool value)
         {
-            Console.Error.WriteLine("Boolean type is not supported by the " + name + " uniform variable!");
+            Console.WriteLine("Boolean type is not supported by the " + name + " uniform variable!");
         }
         public virtual void set(Matrix3 value)
         {
-            Console.Error.WriteLine("Matrix3 type is not supported by the " + name + " uniform variable!");
+            Console.WriteLine("Matrix3 type is not supported by the " + name + " uniform variable!");
         }
         public virtual void set(Matrix4 value)
         {
-            Console.Error.WriteLine("Matrix4 type is not supported by the " + name + " uniform variable!");
+            Console.WriteLine("Matrix4 type is not supported by the " + name + " uniform variable!");
         }
 
         public virtual void set(int[] value)
         {
-            Console.Error.WriteLine("Integer[] type is not supported by the " + name + " uniform variable!");
+            Console.WriteLine("Integer[] type is not supported by the " + name + " uniform variable!");
         }
         public virtual void set(float[] value)
         {
-            Console.Error.WriteLine("Float[] type is not supported by the " + name + " uniform variable!");
+            Console.WriteLine("Float[] type is not supported by the " + name + " uniform variable!");
         }
         public virtual void set(Vector2[] value)
         {
-            Console.Error.WriteLine("Vector2[] type is not supported by the " + name + " uniform variable!");
+            Console.WriteLine("Vector2[] type is not supported by the " + name + " uniform variable!");
         }
         public virtual void set(Vector3[] value)
         {
-            Console.Error.WriteLine("Vector3[] type is not supported by the " + name + " uniform variable!");
+            Console.WriteLine("Vector3[] type is not supported by the " + name + " uniform variable!");
         }
         public virtual void set(Vector4[] value)
         {
-            Console.Error.WriteLine("Vector4[] type is not supported by the " + name + " uniform variable!");
+            Console.WriteLine("Vector4[] type is not supported by the " + name + " uniform variable!");
         }
         public virtual void set(bool[] value)
         {
-            Console.Error.WriteLine("Boolean[] type is not supported by the " + name + " uniform variable!");
+            Console.WriteLine("Boolean[] type is not supported by the " + name + " uniform variable!");
         }
         public virtual void set(Matrix3[] value)
         {
-            Console.Error.WriteLine("Matrix3[] type is not supported by the " + name + " uniform variable!");
+            Console.WriteLine("Matrix3[] type is not supported by the " + name + " uniform variable!");
         }
         public virtual void set(Matrix4[] value)
         {
-            Console.Error.WriteLine("Matrix4[] type is not supported by the " + name + " uniform variable!");
+            Console.WriteLine("Matrix4[] type is not supported by the " + name + " uniform variable!");
         }
     }
 }

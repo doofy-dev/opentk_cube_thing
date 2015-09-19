@@ -3,6 +3,7 @@ using cube_thing.renderEngine.render.model;
 using cube_thing.renderEngine.render.shader.material;
 using OpenTK;
 using OpenTK.Graphics.OpenGL;
+using System;
 using static renderEngine.utils.OpenTKAsOpenGL;
 
 namespace cube_thing.renderEngine.components.renderer
@@ -38,14 +39,14 @@ namespace cube_thing.renderEngine.components.renderer
         {
             gameObject.transform.createTransformationMatrix();
 
-            Matrix4 newTransform = new Matrix4();
-            if (transformMatrix != null)
+            Matrix4 newTransform = transformMatrix;
+            if (transformMatrix.ToString() != Matrix4.Zero.ToString())
             {
-                newTransform = transformMatrix*gameObject.transform.getTransformationMatrix();
+                newTransform = transformMatrix * gameObject.transform.getTransformationMatrix();
             }
             else
             {
-                newTransform = gameObject.transform.getTransformationMatrix()*1;
+                newTransform = gameObject.transform.getTransformationMatrix();
             }
             material.getTransformationMatrix().set(newTransform);
             material.getViewMatrix().set(AbstractCamera.getMainCamera().getViewMatrix());

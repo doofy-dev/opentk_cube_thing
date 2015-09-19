@@ -36,7 +36,6 @@ namespace cube_thing.renderEngine.components.physics
             g.transform.parent = this.gameObject;
             if (childNodes.ContainsKey(g.name))
             {
-                Console.Error.WriteLine("Overrided '" + g.name + "' component in '" + this.gameObject.name + "'!");
                 childNodes[g.name] = g;
             }
             childNodes.Add(g.name, g);
@@ -46,7 +45,7 @@ namespace cube_thing.renderEngine.components.physics
         {
             if (childNodes.ContainsKey(name))
                 return childNodes[name];
-            Console.Error.WriteLine("The requested child: '" + name + "' not found in '" + this.gameObject.name + "'!");
+            Console.WriteLine("The requested child: '" + name + "' not found in '" + this.gameObject.name + "'!");
             return null;
         }
 
@@ -71,7 +70,7 @@ namespace cube_thing.renderEngine.components.physics
             Matrix4 rotZ = Matrix4.CreateFromAxisAngle(Vector3.UnitZ, (float)Maths.toRadians((double)rotation.Z));
             Matrix4 scaleMat = Matrix4.CreateScale(scale.X, scale.Y, scale.Z);
 
-            this.transformationMatrix = translation*rotX*rotY*rotZ*scaleMat;
+            transformationMatrix = translation*rotX*rotY*rotZ*scaleMat;
         }
 
         public Matrix4 getTransformationMatrix()

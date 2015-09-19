@@ -1,4 +1,5 @@
 ﻿using cube_thing.renderEngine.tools.loader;
+using System;
 using static renderEngine.utils.OpenTKAsOpenGL;
 
 namespace cube_thing.renderEngine.render.model
@@ -148,7 +149,9 @@ namespace cube_thing.renderEngine.render.model
         {
             if (enableVAOArray != null)
                 for (int i = 0; i < enableVAOArray.Length; i++)
+                {
                     glEnableVertexAttribArray(enableVAOArray[i]);
+                }
         }
         public void disableVAO()
         {

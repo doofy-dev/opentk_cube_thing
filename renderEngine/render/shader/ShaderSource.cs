@@ -1,4 +1,5 @@
-﻿using System;
+﻿using cube_thing.renderEngine.core;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
@@ -19,9 +20,10 @@ namespace renderEngine.render.shader
         {
             int shaderID;
 
-            using (StreamReader sr = new StreamReader(file))
+            using (StreamReader sr = new StreamReader(Settings.getInstance().getShaderPath()+file))
             {
                 string shader = sr.ReadToEnd();
+
                 shaderID = glCreateShader(type);
                 glShaderSource(shaderID, shader);
                 glCompileShader(shaderID);
@@ -29,7 +31,7 @@ namespace renderEngine.render.shader
                 {
                     Console.WriteLine(glGetShaderInfoLog(shaderID));
                     Console.WriteLine("The shader (" + file + ") has some errors!");
-                    System.Environment.Exit(0);
+                    Environment.Exit(0);
                 }  
             }
             return shaderID;
