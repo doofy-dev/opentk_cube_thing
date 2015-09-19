@@ -3,7 +3,7 @@ using static renderEngine.utils.OpenTKAsOpenGL;
 
 namespace cube_thing.renderEngine.render.shader.uniform
 {
-    class UniformArrBool : UniformVariable
+    public class UniformArrBool : UniformVariable
     {
         private bool[] value;
 

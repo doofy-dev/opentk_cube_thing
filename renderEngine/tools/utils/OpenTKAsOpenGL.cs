@@ -19,6 +19,17 @@ namespace renderEngine.utils
         public static int GL_FRAGMENT_SHADER = 0;
         public static int GL_VERTEX_SHADER = 1;
 
+        #region enableCap
+        public static EnableCap GL_BLEND = EnableCap.Blend;
+        public static EnableCap GL_CULL_FACE = EnableCap.CullFace; 
+        public static EnableCap GL_DEPTH_TEST = EnableCap.DepthTest;
+        #endregion
+
+        public static CullFaceMode GL_BACK = CullFaceMode.Back;
+        public static CullFaceMode GL_FRONT = CullFaceMode.Front;
+
+        public static DepthFunction GL_LESS = DepthFunction.Less;
+
         public static ShaderParameter GL_COMPILE_STATUS = ShaderParameter.CompileStatus;
 
         private static ShaderType[] shaderTypes = new ShaderType[]
@@ -35,6 +46,13 @@ namespace renderEngine.utils
 
         public static VertexAttribPointerType GL_FLOAT = VertexAttribPointerType.Float;
         #endregion
+
+        public static MaterialFace GL_FRONT_AND_BACK = MaterialFace.FrontAndBack;
+
+        public static PolygonMode GL_LINE = PolygonMode.Line;
+        public static PolygonMode GL_FILL= PolygonMode.Line;
+
+        public static DrawElementsType GL_UNSIGNED_INT = DrawElementsType.UnsignedInt;
 
         #region Texture
         public static TextureTarget GL_TEXTURE_2D = TextureTarget.Texture2D;
@@ -121,6 +139,37 @@ namespace renderEngine.utils
         {
             GL.VertexAttribPointer(index, size, type, normalized, stride, offset);
         }
+        public static void glEnable(EnableCap enable)
+        {
+            GL.Enable(enable);
+        }
+        public static void glDisable(EnableCap enable)
+        {
+            GL.Enable(enable);
+        }
+        public static void glCullFace(CullFaceMode mode)
+        {
+            GL.CullFace(mode);
+        }
+        public static void glPolygonMode(MaterialFace face, PolygonMode mode)
+        {
+            GL.PolygonMode(face, mode);
+        }
+        public static void glDrawElements(BeginMode mode, int count, DrawElementsType type, int indices)
+        {
+            GL.DrawElements(mode, count, type, indices);
+        }
+        public static void glDepthFunc(DepthFunction fn)
+        {
+            GL.DepthFunc(fn);
+        }
+        public static void glViewport(int x, int y, int width, int height)
+        { 
+            GL.Viewport(x,y,width,height);
+        }
+        #endregion
+
+        #region Texture
         public static void glBindTexture(TextureTarget target, int texture)
         {
             GL.BindTexture(target, texture);

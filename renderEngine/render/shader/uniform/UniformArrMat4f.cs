@@ -4,7 +4,7 @@ using static renderEngine.utils.OpenTKAsOpenGL;
 
 namespace cube_thing.renderEngine.render.shader.uniform
 {
-    class UniformArrMat4f : UniformVariable
+    public class UniformArrMat4f : UniformVariable
     {
         private Matrix4[] value;
 

@@ -1,4 +1,6 @@
 ﻿
+using cube_thing.renderEngine.components.camera;
+using cube_thing.renderEngine.render;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -18,10 +20,10 @@ namespace cube_thing
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
             */
-            using (Main main = new Main())
-            {
-                main.Run(60.0,60.0);
-            }
+            AbstractCamera cam = new AbstractCamera();
+            cam.setMain();
+            cam.setBackgroundColor(new OpenTK.Vector3(100, 100, 100));
+            new DisplayManager();
         }
     }
 }

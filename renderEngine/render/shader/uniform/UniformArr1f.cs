@@ -3,7 +3,7 @@ using static renderEngine.utils.OpenTKAsOpenGL;
 
 namespace cube_thing.renderEngine.render.shader.uniform
 {
-    class UniformArr1f : UniformVariable
+    public class UniformArr1f : UniformVariable
     {
         private float[] value;
 

@@ -143,7 +143,7 @@ namespace cube_thing.renderEngine.tools.loader
         {
             Bitmap flag = new Bitmap(2, 2);
             for (int i = 0; i < 2; i++)
-                for (j = 0; j < 2; j++)
+                for (int j = 0; j < 2; j++)
                     flag.SetPixel(i, j, Color.FromArgb((int)color.W, (int)color.X, (int)color.Y, (int)color.Z));
             return loadTexture(flag);
         }

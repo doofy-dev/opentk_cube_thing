@@ -4,7 +4,7 @@ using static renderEngine.utils.OpenTKAsOpenGL;
 
 namespace cube_thing.renderEngine.render.shader.uniform
 {
-    class UniformArrVec2 : UniformVariable
+    public class UniformArrVec2 : UniformVariable
     {
         private Vector2[] value;
 

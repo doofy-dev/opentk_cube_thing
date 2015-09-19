@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using static renderEngine.utils.OpenTKAsOpenGL;
 
 namespace renderEngine.render.shader
@@ -25,11 +23,11 @@ namespace renderEngine.render.shader
             bindAttributes();
             glLinkProgram(programID);
             glValidateProgram(programID);
-            getAttUniformLocations();
+            getAllUniformLocations();
         }
 
         protected abstract void bindAttributes();
-        protected abstract void getAttUniformLocations();
+        protected abstract void getAllUniformLocations();
         public abstract void loadUniformVariables();
 
         protected int getUniformLoaction(String uniformName)

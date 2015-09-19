@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
-using System.Threading;
 using static renderEngine.utils.OpenTKAsOpenGL;
 
 namespace renderEngine.render.shader
@@ -30,7 +29,7 @@ namespace renderEngine.render.shader
                 {
                     Console.WriteLine(glGetShaderInfoLog(shaderID));
                     Console.WriteLine("The shader (" + file + ") has some errors!");
-                    Thread.CurrentThread.Abort();
+                    System.Environment.Exit(0);
                 }  
             }
             return shaderID;
