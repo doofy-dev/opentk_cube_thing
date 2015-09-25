@@ -37,40 +37,59 @@ namespace cube_thing
             //Sample box setup
             GameObject box = new GameObject("Box");
             World.getInstance().assingGameObject(box);  //Add gameobject to the world
-
+            renderEngine.tools.utils.Timer timer = renderEngine.tools.utils.Timer.getInstance();
             GameObject box2 = new GameObject("Box2");
             box.addChild(box2);
             box2.transform.position.Y = 2;
             //EVENTS
             KBEvent.getInstance(Key.A).addKeyDown(() =>
             {
-                camera.transform.rotation.Y--;
+                camera.transform.rotation.Y-= 10*timer.getDeltaTime();         //timer.getDeltaTime() is for FPS drop to move always the same speed
             });
             KBEvent.getInstance(Key.D).addKeyDown(() =>
             {
-                camera.transform.rotation.Y++;
+                camera.transform.rotation.Y+= 10 * timer.getDeltaTime();
             });
             KBEvent.getInstance(Key.W).addKeyDown(() =>
             {
-                camera.transform.rotation.X--;
+                camera.transform.rotation.X-= 10 * timer.getDeltaTime();
             });
             KBEvent.getInstance(Key.S).addKeyDown(() =>
             {
-                camera.transform.rotation.X++;
+                camera.transform.rotation.X+= 10 * timer.getDeltaTime();
             });
             KBEvent.getInstance(Key.Q).addKeyDown(() =>
             {
-                camera.transform.position.Z-=0.1f;
+                camera.transform.position.Z-=0.1f * timer.getDeltaTime();
             });
             KBEvent.getInstance(Key.E).addKeyDown(() =>
             {
-                camera.transform.position.Z += 0.1f;
+                camera.transform.position.Z += 0.1f* timer.getDeltaTime();
             });
 
 
             KBEvent.getInstance(Key.Escape).addKeyDown(() =>
             {
                 window.getWindow().Exit();
+            });
+
+            MBEvent.getInstance(MouseButton.Left).addButtonPress(() =>
+            {
+                box.transform.scale.X -= 0.1f * timer.getDeltaTime();
+            });
+            MBEvent.getInstance(MouseButton.Right).addButtonPress(() =>
+            {
+                box.transform.scale.X += 0.1f * timer.getDeltaTime();
+            });
+
+            MWheelEvent.getInstance().addScroll((y) =>
+            {
+                camera.transform.position.Z += y * timer.getDeltaTime();
+            });
+            MMoveEvent.getInstance().addMove((x, y) =>
+            {
+                camera.transform.rotation.Y += x * timer.getDeltaTime()*10;
+                camera.transform.rotation.X += y * timer.getDeltaTime()*10;
             });
 
             //Window's onLoad event, OpenGL dependent code has to be here
@@ -83,7 +102,8 @@ namespace cube_thing
 
                 Renderer m2 = new Renderer(Primitives.Cube(), material);     //Creating renderer component -> Parameters Primitives.PRIMITIVE_NAME, material
                 box2.addComponent(m2);
-                material.setColor(new Vector4(1, 0, 0.1f, 1));      //Setting the materials color
+                material.setHasTransparency(true);
+                material.setColor(new Vector4(1, 0, 0.1f, 0.1f));      //Setting the materials color
 
 
             });
