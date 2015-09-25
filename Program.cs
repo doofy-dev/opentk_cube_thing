@@ -103,7 +103,7 @@ namespace cube_thing
                 DefaultMat material = new DefaultMat(); //Creating material component
                 material.setCullingEnabled(false);       //Backface culling enabled
                 material.setHasTransparency(true);
-                material.setColor(new Vector4(0, 1, 0, 0.2f));      //Setting the materials color
+                material.setColor(new Vector4(0, 1, 0, 0.3f));      //Setting the materials color
                 Renderer m = new Renderer(Primitives.Cube(), material);     //Creating renderer component -> Parameters Primitives.PRIMITIVE_NAME, material
                 box.addComponent(m);                    //Assing renderer to the gameobject
 
@@ -111,14 +111,14 @@ namespace cube_thing
                 DefaultMat material2 = new DefaultMat(); //Creating material component
                 material2.setCullingEnabled(false);       //Backface culling enabled
                 material2.setHasTransparency(true);
-                material2.setColor(new Vector4(1, 0, 0, 0.2f));      //Setting the materials color
+                material2.setColor(new Vector4(1, 0, 0, 0.3f));      //Setting the materials color
                 Renderer m2 = new Renderer(Primitives.Cube(), material2);     //Creating renderer component -> Parameters Primitives.PRIMITIVE_NAME, material
                 box2.addComponent(m2);
 
                 DefaultMat material3 = new DefaultMat(); //Creating material component
                 material3.setCullingEnabled(false);       //Backface culling enabled
                 material3.setHasTransparency(true);
-                material3.setColor(new Vector4(0, 0, 1, 0.2f));      //Setting the materials color
+                material3.setColor(new Vector4(0, 0, 1, 0.3f));      //Setting the materials color
                 Renderer m3 = new Renderer(Primitives.Cube(), material3);     //Creating renderer component -> Parameters Primitives.PRIMITIVE_NAME, material
                 box3.addComponent(m3);
 
@@ -126,7 +126,7 @@ namespace cube_thing
             });
 
             //Starting the rendering at 60 Update/s with 60 FPS
-            window.Start(60, 60);
+            window.Start(60,60);
         }
     }
 }
