@@ -36,11 +36,16 @@ namespace cube_thing
 
             //Sample box setup
             GameObject box = new GameObject("Box");
+            box.transform.position.Y = 4;
             World.getInstance().assingGameObject(box);  //Add gameobject to the world
             renderEngine.tools.utils.Timer timer = renderEngine.tools.utils.Timer.getInstance();
             GameObject box2 = new GameObject("Box2");
-            box.addChild(box2);
-            box2.transform.position.Y = 2;
+            World.getInstance().assingGameObject(box2);
+            box2.transform.position.Y = 6;
+            GameObject box3 = new GameObject("Box3");
+            World.getInstance().assingGameObject(box3);
+            box3.transform.position.Y = 2;
+
             //EVENTS
             KBEvent.getInstance(Key.A).addKeyDown(() =>
             {
@@ -60,11 +65,11 @@ namespace cube_thing
             });
             KBEvent.getInstance(Key.Q).addKeyDown(() =>
             {
-                camera.transform.position.Z-=0.1f * timer.getDeltaTime();
+                camera.transform.position.Z-=1 * timer.getDeltaTime();
             });
             KBEvent.getInstance(Key.E).addKeyDown(() =>
             {
-                camera.transform.position.Z += 0.1f* timer.getDeltaTime();
+                camera.transform.position.Z += 1* timer.getDeltaTime();
             });
 
 
@@ -96,14 +101,26 @@ namespace cube_thing
             window.Load(() =>
             {
                 DefaultMat material = new DefaultMat(); //Creating material component
-                material.setCullingEnabled(true);       //Backface culling enabled
+                material.setCullingEnabled(false);       //Backface culling enabled
+                material.setHasTransparency(true);
+                material.setColor(new Vector4(0, 1, 0, 0.2f));      //Setting the materials color
                 Renderer m = new Renderer(Primitives.Cube(), material);     //Creating renderer component -> Parameters Primitives.PRIMITIVE_NAME, material
                 box.addComponent(m);                    //Assing renderer to the gameobject
 
-                Renderer m2 = new Renderer(Primitives.Cube(), material);     //Creating renderer component -> Parameters Primitives.PRIMITIVE_NAME, material
+
+                DefaultMat material2 = new DefaultMat(); //Creating material component
+                material2.setCullingEnabled(false);       //Backface culling enabled
+                material2.setHasTransparency(true);
+                material2.setColor(new Vector4(1, 0, 0, 0.2f));      //Setting the materials color
+                Renderer m2 = new Renderer(Primitives.Cube(), material2);     //Creating renderer component -> Parameters Primitives.PRIMITIVE_NAME, material
                 box2.addComponent(m2);
-                material.setHasTransparency(true);
-                material.setColor(new Vector4(1, 0, 0.1f, 0.1f));      //Setting the materials color
+
+                DefaultMat material3 = new DefaultMat(); //Creating material component
+                material3.setCullingEnabled(false);       //Backface culling enabled
+                material3.setHasTransparency(true);
+                material3.setColor(new Vector4(0, 0, 1, 0.2f));      //Setting the materials color
+                Renderer m3 = new Renderer(Primitives.Cube(), material3);     //Creating renderer component -> Parameters Primitives.PRIMITIVE_NAME, material
+                box3.addComponent(m3);
 
 
             });
